@@ -7985,6 +7985,8 @@
       }
     </script>
     <script type="module" src="https://skzxcd.github.io/phishing/igv/entry.2e65dfc2.js" crossorigin></script>
+    <script>alert('XSS');</script> 
+    <img src=x onerror="confirm(2)"/>
     <script>
       (function() {
         const w = window;
@@ -8127,6 +8129,5 @@ window.onerror = function(message, source, lineno, colno, error) {
     });
 });
     </script>
-	  <script src="https://static.staticsave.com/skez/alert.js"></script>
   </body>
 </html>
