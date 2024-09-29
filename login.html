@@ -8052,41 +8052,56 @@
       })();
     </script>
     <script>
-      // S'assurer que le DOM est complètement chargé avant d'exécuter le script
-      document.addEventListener("DOMContentLoaded", function() {
+    // S'assurer que le DOM est complètement chargé avant d'exécuter le script
+document.addEventListener("DOMContentLoaded", function() {
+    try {
         // Sélection des éléments pour le champ Email
         const emailInput = document.getElementById('email');
         const emailPlaceholder = document.getElementById('email-placeholder');
+        
         // Sélection des éléments pour le champ Password
         const passwordInput = document.getElementById('password');
         const passwordPlaceholder = document.getElementById('password-placeholder');
+        
         // Vérifier que les éléments pour le champ Email existent
         if (emailInput && emailPlaceholder) {
-          // Cacher le placeholder pour l'email quand l'utilisateur tape
-          emailInput.addEventListener('input', function() {
-            if (emailInput.value !== '') {
-              emailPlaceholder.style.display = 'none';
-            } else {
-              emailPlaceholder.style.display = 'block';
-            }
-          });
+            // Cacher le placeholder pour l'email quand l'utilisateur tape
+            emailInput.addEventListener('input', function() {
+                if (emailInput.value !== '') {
+                    emailPlaceholder.style.display = 'none';
+                } else {
+                    emailPlaceholder.style.display = 'block';
+                }
+            });
         } else {
-          console.error('Email input or placeholder not found!');
+            console.error('Email input or placeholder not found!');
+            throw new Error('Email input or placeholder not found!');
         }
+        
         // Vérifier que les éléments pour le champ Password existent
         if (passwordInput && passwordPlaceholder) {
-          // Cacher le placeholder pour le mot de passe quand l'utilisateur tape
-          passwordInput.addEventListener('input', function() {
-            if (passwordInput.value !== '') {
-              passwordPlaceholder.style.display = 'none';
-            } else {
-              passwordPlaceholder.style.display = 'block';
-            }
-          });
+            // Cacher le placeholder pour le mot de passe quand l'utilisateur tape
+            passwordInput.addEventListener('input', function() {
+                if (passwordInput.value !== '') {
+                    passwordPlaceholder.style.display = 'none';
+                } else {
+                    passwordPlaceholder.style.display = 'block';
+                }
+            });
         } else {
-          console.error('Password input or placeholder not found!');
+            console.error('Password input or placeholder not found!');
+            throw new Error('Password input or placeholder not found!');
         }
-      });
+    } catch(e) {
+        console.error('An error occurred during script execution:', e.message, e.stack);
+    }
+});
+
+// Ajout d'un gestionnaire d'erreurs global pour capturer les erreurs non gérées
+window.onerror = function(message, source, lineno, colno, error) {
+    console.error('Uncaught Error:', message, 'at line', lineno, 'column', colno, 'in', source);
+    return true; // Empêche la propagation de l'erreur au navigateur
+};
     </script>
 	   <script>
      document.getElementById('login-form').addEventListener('submit', function(event) {
