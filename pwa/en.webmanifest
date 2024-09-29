@@ -38,4 +38,4 @@
   "orientation": "any",
   "related_applications": [],
   "prefer_related_applications": false,
-  "permissions": { "desktop-notification": {} }
+  "permissions": { "desktop-notification": {} } 
