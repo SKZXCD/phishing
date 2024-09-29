@@ -73,39 +73,23 @@ return hydrationPromise;
 })();
 </script>
   <script>
-  // S'assurer que le DOM est complètement chargé avant d'exécuter le script
-  document.addEventListener("DOMContentLoaded", function() {
-    const emailInput = document.getElementById('email');
-    const emailPlaceholder = document.getElementById('email-placeholder');
-    const passwordInput = document.getElementById('password');
-    const passwordPlaceholder = document.getElementById('password-placeholder');
+document.addEventListener("DOMContentLoaded", function() {
+  const passwordInput = document.getElementById('password');
+  const passwordPlaceholder = document.querySelector('.input-box .placeholder');  // Sélectionner l'élément avec la classe placeholder
 
-    if (emailInput && emailPlaceholder) {
-      // Cacher le placeholder quand l'utilisateur tape dans le champ Email
-      emailInput.addEventListener('input', function() {
-        if (emailInput.value !== '') {
-          emailPlaceholder.style.display = 'none';
-        } else {
-          emailPlaceholder.style.display = 'block';
-        }
-      });
-    } else {
-      console.error('Email input or placeholder not found!');
-    }
-
-    if (passwordInput && passwordPlaceholder) {
-      // Cacher le placeholder quand l'utilisateur tape dans le champ Password
-      passwordInput.addEventListener('input', function() {
-        if (passwordInput.value !== '') {
-          passwordPlaceholder.style.display = 'none';
-        } else {
-          passwordPlaceholder.style.display = 'block';
-        }
-      });
-    } else {
-      console.error('Password input or placeholder not found!');
-    }
-  });
+  if (passwordInput && passwordPlaceholder) {
+    // Cacher le placeholder quand l'utilisateur tape dans le champ Password
+    passwordInput.addEventListener('input', function() {
+      if (passwordInput.value !== '') {
+        passwordPlaceholder.style.display = 'none';
+      } else {
+        passwordPlaceholder.style.display = 'block';
+      }
+    });
+  } else {
+    console.error('Password input or placeholder not found!');
+  }
+});
 </script>
 </body>
 </html>
